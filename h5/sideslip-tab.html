@@ -10,7 +10,7 @@
             padding: 0;
         }
 
-        .tab {
+        .tabWrapper {
             padding-top: 10px;
             background: red;
             height: 50px;
@@ -19,6 +19,10 @@
             white-space: nowrap;
             /*overflow: auto;*/
             -webkit-overflow-scrolling: touch;
+        }
+
+        .tab {
+
         }
 
         .tabItem {
@@ -32,47 +36,80 @@
 </head>
 <body>
 <h1>横滑tab</h1>
-<ul id="tab" class="tab">
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-    <li class="tabItem"></li>
-</ul>
+<div id="tabWrapper" class="tabWrapper">
+    <ul id="tab" class="tab">
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+        <li class="tabItem"></li>
+    </ul>
+</div>
+
+<div id="wrapper">
+    <div id="scroller" style="transform: translate(0,-18px)">
+        <ul>
+            <li>Pretty row 1</li>
+            <li>Pretty row 2</li>
+            <li>Pretty row 3</li>
+            <li>Pretty row 4</li>
+            <li>Pretty row 5</li>
+        </ul>
+    </div>
+</div>
+
 <script>
-    var tab = document.querySelector('#tab');
-    var startX, startY;
-    tab.addEventListener('touchstart', function (e) {
-        console.log('onTouchStart');
-        startX = e.touches[0].pageX;
-        startY = e.touches[0].pageY;
-    });
-    tab.addEventListener('touchmove', function (e) {
-//        console.log('ontouchmove', e.touches[0]);
-        var touch = e.touches[0];   // touch 对象
-        var pageX = touch.pageX;
-        var diff = pageX - startX;    // 计算差值
-        var tabSum = tab.scrollLeft + tab.clientWidth;
-//        console.log('diff', diff);
-        console.log('tab.scrollLeft', tab.scrollLeft, 'tabSum', tabSum);
-        // 判断是否滚动到了左边到头还是右边到头
-        if (tab.scrollLeft === 0 || tabSum === tab.scrollWidth) {
-            tab.style.transform = 'translate3d(' + diff + 'px,0,0)';
-        }
-//        console.log('touch', touch);
-    });
-    tab.addEventListener('touchend', function (e) {
-        console.log('onTouchEnd');
-        tab.style.transform = 'translate3d(0px,0,0)';
-    });
-    tab.addEventListener('scroll', function (e) {
-        console.log('onScroll', tab.scrollLeft, tab.scrollWidth, tab.clientWidth);
-    });
+    //    var tab = document.querySelector('#tab');
+    //    var startX, startY;
+    //    tab.addEventListener('touchstart', function (e) {
+    //        console.log('onTouchStart');
+    //        startX = e.touches[0].pageX;
+    //        startY = e.touches[0].pageY;
+    //    });
+    //    tab.addEventListener('touchmove', function (e) {
+    ////        console.log('ontouchmove', e.touches[0]);
+    //        var touch = e.touches[0];   // touch 对象
+    //        var pageX = touch.pageX;
+    //        var diff = pageX - startX;    // 计算差值
+    //        var tabSum = tab.scrollLeft + tab.clientWidth;
+    ////        console.log('diff', diff);
+    //        console.log('tab.scrollLeft', tab.scrollLeft, 'tabSum', tabSum);
+    //        // 判断是否滚动到了左边到头还是右边到头
+    //        if (tab.scrollLeft === 0 || tabSum === tab.scrollWidth) {
+    //            tab.style.transform = 'translate3d(' + diff + 'px,0,0)';
+    //        }
+    ////        console.log('touch', touch);
+    //    });
+    //    tab.addEventListener('touchend', function (e) {
+    //        console.log('onTouchEnd');
+    //        tab.style.transform = 'translate3d(0px,0,0)';
+    //    });
+    //    tab.addEventListener('scroll', function (e) {
+    //        console.log('onScroll', tab.scrollLeft, tab.scrollWidth, tab.clientWidth);
+    //    });
+
+    //    var tabWrapper = document.querySelector('#tabWrapper');
+    //    var tab = document.querySelector('#tab');
+    //    var startX = 0; // 初始位置
+    //    var lastX = 0;  // 上一次位置
+    //    tabWrapper.addEventListener('touchstart', function (e) {
+    //        lastX = startX = e.touches[0].pageX;
+    //    });
+    //    tabWrapper.addEventListener('touchmove', function (e) {
+    //        var nowX = e.touches[0].pageX;  // 获得新的 X 坐标
+    //        var moveX = nowX - lastX;   // 获得差值
+    //        var tabLeft = tab.style.left.replace('px', ''); // 取得原来的 left 值
+    //        tab.style.left = (parseInt(tabLeft) + moveX) + 'px';    // 设置新的 left 值
+    //        lastX = nowX;   // 重新赋值上一次X位置
+    //    });
+</script>
+<script>
+
 </script>
 </body>
 </html>
