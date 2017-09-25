@@ -5,7 +5,7 @@
     <title>横滑tab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <style>
-        body {
+        body, ul {
             margin: 0;
             padding: 0;
         }
@@ -17,6 +17,8 @@
             box-sizing: border-box;
             overflow-x: scroll;
             white-space: nowrap;
+            /*overflow: auto;*/
+            -webkit-overflow-scrolling: touch;
         }
 
         .tabItem {
@@ -30,17 +32,47 @@
 </head>
 <body>
 <h1>横滑tab</h1>
-<div class="tab">
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-    <div class="tabItem"></div>
-</div>
+<ul id="tab" class="tab">
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+    <li class="tabItem"></li>
+</ul>
+<script>
+    var tab = document.querySelector('#tab');
+    var startX, startY;
+    tab.addEventListener('touchstart', function (e) {
+        console.log('onTouchStart');
+        startX = e.touches[0].pageX;
+        startY = e.touches[0].pageY;
+    });
+    tab.addEventListener('touchmove', function (e) {
+//        console.log('ontouchmove', e.touches[0]);
+        var touch = e.touches[0];   // touch 对象
+        var pageX = touch.pageX;
+        var diff = pageX - startX;    // 计算差值
+        var tabSum = tab.scrollLeft + tab.clientWidth;
+//        console.log('diff', diff);
+        console.log('tab.scrollLeft', tab.scrollLeft, 'tabSum', tabSum);
+        // 判断是否滚动到了左边到头还是右边到头
+        if (tab.scrollLeft === 0 || tabSum === tab.scrollWidth) {
+            tab.style.transform = 'translate3d(' + diff + 'px,0,0)';
+        }
+//        console.log('touch', touch);
+    });
+    tab.addEventListener('touchend', function (e) {
+        console.log('onTouchEnd');
+        tab.style.transform = 'translate3d(0px,0,0)';
+    });
+    tab.addEventListener('scroll', function (e) {
+        console.log('onScroll', tab.scrollLeft, tab.scrollWidth, tab.clientWidth);
+    });
+</script>
 </body>
 </html>
