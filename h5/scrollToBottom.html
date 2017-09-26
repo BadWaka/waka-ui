@@ -9,10 +9,6 @@
             margin: 0;
             padding: 0;
         }
-
-        .scrollUl {
-            /*overflow-y: scroll;*/
-        }
     </style>
 </head>
 <body>
@@ -70,59 +66,14 @@
     <li class="tabItem">123</li>
     <li class="tabItem">123</li>
     <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
-    <li class="tabItem">123</li>
 </ul>
 <script>
     window.onload = function () {
         window.addEventListener('scroll', function () {
-            console.log('onscroll body', document.body.clientHeight, document.body.scrollTop, document.body.scrollHeight);
-            console.log('onscroll body2', window.innerHeight, document.body.scrollTop, document.body.scrollHeight);
+            // document.body.clientHeight
+            console.log('document.body.clientHeight', document.body.clientHeight, document.body.scrollTop, document.body.scrollHeight);
+            // window.innerHeight
+            console.log('window.innerHeight', window.innerHeight, document.body.scrollTop, document.body.scrollHeight);
         });
     }
 </script>
