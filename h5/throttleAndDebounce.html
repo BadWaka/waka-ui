@@ -75,9 +75,10 @@
         }, 500);
     }
 
-    //    window.onscroll = function () {
-    //        debounce(print);
-    //    };
+    // 简单版本的调用
+    window.onscroll = function () {
+        debounce(print);
+    };
 
     /**
      * underscore 防抖
@@ -93,6 +94,8 @@
             // 当前的时间减去调用的时间
             var last = new Date().getTime() - timestamp;
             // 如果还没到约定的等待时间
+            // setTimeout是不精准延时，debounce里面补充判断如果last在[0,wait)区间，
+            // 则继续setTimeout一个wait-last的时间再执行函数，保证函数执行程序一定在延时了wait之后执行
             if (last >= 0 && last < wait) {
                 // 继续延时调用 later
                 timeout = setTimeout(later, wait - last);
@@ -130,7 +133,10 @@
         }
     }
 
-    window.onscroll = _debounce(print, 500);
+    // underscore 版本的函数式调用
+    //    // 延时调用
+    //    window.onscroll = _debounce(print, 500);
+    // 立即调用，使用于一些需要立即反馈的函数
     window.onscroll = _debounce(print, 500, true);
 
 </script>
