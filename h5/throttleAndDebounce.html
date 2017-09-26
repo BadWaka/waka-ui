@@ -172,10 +172,34 @@
             // 否则置为当前时间戳
             previous = options.leading === false ? 0 : new Date().getTime();
             timeout = null;
-            result = func.apply(context, args);
+            result = func.apply(context, args); // 调用函数，得到结果
             context = args = null;
-        }
+        };
 
+        return function () {
+            // 记录当前时间戳
+            var now = new Date().getTime();
+
+            // 当 previous === 0 时代表是第一次执行回调（之后 previous 值为上一次时间戳）
+            // 并且如果程序设定第一个回调不是立即执行的（options.leading === false）
+            // 则将 previous 值（上次执行的时间戳）设为 now 的时间戳（第一次触发时）
+            // 表示刚执行过，这次就不用执行了
+            if (!previous && options.leading === false) {
+                previous = now;
+            }
+
+            // 距离下一次触发 func 还需要等待的时间
+            var remaining = wait - (now - previous);
+            context = this;
+            args = arguments;
+
+            if (remaining <= 0 || remaining > wait) {
+                if (timeout) {
+                    clearTimeout(timeout);
+                    timeout = null;
+                }
+            }
+        }
     }
 
 </script>
