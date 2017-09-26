@@ -65,8 +65,8 @@
 
     /**
      * 简单防抖，这里没有返回值，是调用了传入的函数
-     * @param method
-     * @param context
+     * @param method 要防抖的函数
+     * @param context 上下文对象
      */
     function debounce(method, context) {
         clearTimeout(method.tId);
