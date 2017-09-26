@@ -58,10 +58,16 @@
     <li>123</li>
 </ul>
 <script>
-    window.onscroll = function () {
-        debounce(print);
-    };
 
+    function print() {
+        console.log('window onScroll');
+    }
+
+    /**
+     * 简单防抖，这里没有返回值，是调用了传入的函数
+     * @param method
+     * @param context
+     */
     function debounce(method, context) {
         clearTimeout(method.tId);
         method.tId = setTimeout(function () {
@@ -69,9 +75,64 @@
         }, 500);
     }
 
-    function print() {
-        console.log('window onScroll');
+    //    window.onscroll = function () {
+    //        debounce(print);
+    //    };
+
+    /**
+     * underscore 防抖
+     * @param func type:function 调用的函数
+     * @param wait type:number 等待的时间
+     * @param immediate type:boolean 是否立即
+     * @return function
+     */
+    function _debounce(func, wait, immediate) {
+        var timeout, args, context, timestamp, result;
+
+        var later = function () {
+            // 当前的时间减去调用的时间
+            var last = new Date().getTime() - timestamp;
+            // 如果还没到约定的等待时间
+            if (last >= 0 && last < wait) {
+                // 继续延时调用 later
+                timeout = setTimeout(later, wait - last);
+            } else {
+                // 清空标识
+                timeout = null;
+                if (!immediate) {   // 如果立即调用标志为 false ，调用函数；这里的判断是必要的，因为不论立即调用标志为什么都会进来
+                    result = func.apply(context, args);
+                    context = args = null;
+                }
+            }
+        };
+
+        return function () {
+            context = this; // 确定上下文
+            args = arguments;   // 获得参数
+            timestamp = new Date().getTime();   // 当前时间戳
+
+            // 是否立即调用的标识
+            var callNow = immediate && !timeout;    // !timeout 即表示是第一次触发
+
+            // 如果是第一次触发，不论立即调用标记是否为 true，都会设置 timeout；这是因为要保证只触发一次
+            if (!timeout) {
+                // wait 毫秒后调用 later 函数
+                timeout = setTimeout(later, wait);
+            }
+
+            // 如果是立即触发
+            if (callNow) {
+                // 调用函数，这里的 result 不能省略，因为 func 可能会有返回值
+                result = func.apply(context, args);
+                context = args = null;  // 重置
+            }
+            return result;  // 返回最后的结果
+        }
     }
+
+    window.onscroll = _debounce(print, 500);
+    window.onscroll = _debounce(print, 500, true);
+
 </script>
 </body>
 </html>
