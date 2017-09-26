@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听滚动到底部</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        body, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .scrollUl {
+            /*overflow-y: scroll;*/
+        }
+    </style>
+</head>
+<body>
+<ul id="scrollUl" class="scrollUl">
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+    <li class="tabItem">123</li>
+</ul>
+<script>
+    window.onload = function () {
+        window.addEventListener('scroll', function () {
+            console.log('onscroll body', document.body.clientHeight, document.body.scrollTop, document.body.scrollHeight);
+            console.log('onscroll body2', window.innerHeight, document.body.scrollTop, document.body.scrollHeight);
+        });
+    }
+</script>
+</body>
+</html>
